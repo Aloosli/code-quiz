@@ -12,7 +12,7 @@ function startQuiz() {
 
   
    // Show first question
-   let questionScreen = document.getElementById("question-screen");
+   let questions = document.getElementById("question-screen");
    questionScreen.removeAttribute("class");
   
     displayQuestions();
