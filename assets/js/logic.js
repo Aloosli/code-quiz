@@ -33,6 +33,7 @@ function startTimer() {
     document.getElementById("time").textContent = timeLeft;
     if (timeLeft === 0) {
       clearInterval(timerInterval);
+      endQuiz();
     }
   }, 1000);
 }
