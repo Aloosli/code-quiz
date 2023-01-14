@@ -54,6 +54,10 @@ function endQuiz() {
   finalScore.textContent = score;
 }
 
+// Create an audio element for correct answers
+let correctAudio = new Audio("./assets/sfx/correct.wav");
+// Create an audio element for Incorrect answers
+let inCorrectAudio = new Audio("./assets/sfx/incorrect.wav");
 
 // Function to handle what happens when a user clicks on a choice button
 
@@ -62,9 +66,13 @@ function questionClick() {
   if (this.value === questions[currentQuestionIndex].answer) {
     // Increase score
     score++;
+     // Play the correct sound
+     correctAudio.play();
   } else {
     // Decrease time
     timeLeft -= 15;
+     // Play the incorrect sound
+     inCorrectAudio.play();
   }
   // Move to next question
   currentQuestionIndex++;
