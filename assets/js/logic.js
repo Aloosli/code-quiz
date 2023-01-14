@@ -19,3 +19,8 @@ function startQuiz() {
  
 };
 
+// add event listener to start button to start quiz
+document.getElementById("start").addEventListener("click", startQuiz);
+
+
+
