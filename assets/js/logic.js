@@ -1,5 +1,6 @@
-//Initializing variables for timeLeft, currentQuestion, and score
+//Initializing variables for timeLeft,timerInterval, currentQuestion, and score
 let timeLeft = 75;
+let timerInterval;
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -14,13 +15,44 @@ function startQuiz() {
    let questionsScreen = document.getElementById("questions");
    questionsScreen.classList.remove("hide");
 
+  // Start timer
+  startTimer();
+  
+
+
   // Show first question
   displayQuestions();
 }
 // Add event listener to start button to start quiz
 document.getElementById("start").addEventListener("click", startQuiz);
 
-// add timer here
+// Function to start the timer
+function startTimer() {
+  timerInterval = setInterval(function() {
+    timeLeft--;
+    document.getElementById("time").textContent = timeLeft;
+    if (timeLeft === 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+
+
+
+// Function to handle what happens when the quiz ends
+function endQuiz() {
+  // Hide questions section
+  let questionsScreen = document.getElementById("questions");
+  questionsScreen.classList.add("hide");
+
+  // Show end screen
+  let endScreen = document.getElementById("end-screen");
+  endScreen.classList.remove("hide");
+
+  // Show final score
+  let finalScore = document.getElementById("final-score");
+  finalScore.textContent = score;
+}
 
 
 // Function to handle what happens when a user clicks on a choice button
