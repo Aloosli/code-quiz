@@ -8,7 +8,11 @@ function startQuiz() {
   // Hide the start screen
   let startScreen = document.getElementById("start-screen");
   
-  startScreen.setAttribute("class", "hide");
+  startScreen.classList.add("hide");
+
+   // Show the questions screen
+   let questionsScreen = document.getElementById("questions");
+   questionsScreen.classList.remove("hide");
 
   // Show first question
   displayQuestions();
@@ -17,6 +21,32 @@ function startQuiz() {
 document.getElementById("start").addEventListener("click", startQuiz);
 
 // add timer here
+
+
+// Function to handle what happens when a user clicks on a choice button
+
+function questionClick() {
+  // Check if the choice is correct
+  if (this.value === questions[currentQuestionIndex].answer) {
+    // Increase score
+    score++;
+  } else {
+    // Decrease time
+    timeLeft -= 15;
+  }
+  // Move to next question
+  currentQuestionIndex++;
+
+  // Check if there are any more questions
+  if (currentQuestionIndex < questions.length) {
+    // Display next question
+    displayQuestions();
+  } else {
+    // Quiz is over, show the end screen
+    endQuiz();
+  }
+}
+
 
 // Function to display questions
 
