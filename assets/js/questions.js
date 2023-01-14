@@ -1,4 +1,4 @@
-// questions array
+// Questions array
 let questions = [
   {
     title: "Commonly used data types DO NOT include:",
@@ -11,8 +11,8 @@ let questions = [
     answer: "parentheses"
   },
   {
-    title: "Arrays in JavaScript can be used to store ____.",
-    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    title: "Which of the following is an advantage of using JavaScript?",
+    choices: ["Less server interaction", "Immediate feedback to the visitors", "Increased interactivity", "all of the above"],
     answer: "all of the above"
   },
   {

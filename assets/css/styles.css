@@ -34,6 +34,14 @@ button:hover {
   display: block;
 }
 
+/* 
+This class is used to hide elements by setting their display property to none
+This is used to hide elements on the start screen and display the quiz
+*/
+.hide {
+  display: none;
+}
+
 input[type="text"] {
   font-size: 100%;
 }
