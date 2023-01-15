@@ -1,3 +1,5 @@
+// Description: This file contains the JavaScript code for the high scores page.
+
 document.addEventListener("DOMContentLoaded", function () {
   // Get high scores from local storage
   let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     li.textContent = `${score.initials} - ${score.score}`;
     highScoresList.appendChild(li);
   }
-
+console.log(highScores);
   // Handle clear high scores button click
   document.getElementById("clear").addEventListener("click", function () {
     // Clear high scores from local storage
