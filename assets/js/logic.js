@@ -124,7 +124,7 @@ function endQuiz() {
 // Function to save high score
 function saveHighScore() {
   // eventlistener for submit button
-  document.getElementById("submit").addEventListener("click", function () {
+  
     // Get initials and score
     let initials = document.getElementById("initials").value;
     let score = document.getElementById("final-score").textContent;
@@ -136,5 +136,5 @@ function saveHighScore() {
 
     // Redirect to high scores page
     window.location.href = "highscores.html";
-  });
+  
 };
