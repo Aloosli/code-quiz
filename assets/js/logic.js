@@ -36,10 +36,6 @@ function startTimer() {
   }, 1000);
 }
 
-
-
-//
-
 // Function to handle what happens when a user clicks on a choice button
 
 function questionClick() {
@@ -101,7 +97,7 @@ function displayQuestions() {
     // Display on the page
     choices.appendChild(choiceButton);
   });
-};
+}
 
 // Function to handle what happens when the quiz ends
 function endQuiz() {
@@ -117,12 +113,28 @@ function endQuiz() {
   let finalScore = document.getElementById("final-score");
   finalScore.textContent = score;
 
+  // Attach event listener to submit button to save high score
+  document.getElementById("submit").addEventListener("click", saveHighScore);
+
   // Get user initials
   let initialsInput = document.getElementById("initials");
   let initials = initialsInput.value;
-  
-  // Save initials and score to local storage
-  let highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
-  highScores.push({ initials: initials, score: score });
-  localStorage.setItem("highScores", JSON.stringify(highScores));
 }
+
+// Function to save high score
+function saveHighScore() {
+  // eventlistener for submit button
+  document.getElementById("submit").addEventListener("click", function () {
+    // Get initials and score
+    let initials = document.getElementById("initials").value;
+    let score = document.getElementById("final-score").textContent;
+
+    // Save to local storage
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push({ initials, score });
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
+    // Redirect to high scores page
+    window.location.href = "highscores.html";
+  });
+};

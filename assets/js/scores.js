@@ -1,0 +1,28 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Get high scores from local storage
+  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+  // Sort scores in descending order
+  highScores.sort((a, b) => b.score - a.score);
+
+  // Get high scores list element
+  let highScoresList = document.getElementById("highscores");
+
+  // Loop over scores and add to list
+  for (let i = 0; i < highScores.length; i++) {
+    let score = highScores[i];
+
+    let li = document.createElement("li");
+    li.textContent = `${score.initials} - ${score.score}`;
+    highScoresList.appendChild(li);
+  }
+
+  // Handle clear high scores button click
+  document.getElementById("clear").addEventListener("click", function () {
+    // Clear high scores from local storage
+    localStorage.removeItem("highScores");
+
+    // Clear high scores list
+    highScoresList.innerHTML = "";
+  });
+});
