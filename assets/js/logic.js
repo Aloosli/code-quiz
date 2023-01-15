@@ -8,17 +8,15 @@ let score = 0;
 function startQuiz() {
   // Hide the start screen
   let startScreen = document.getElementById("start-screen");
-  
+
   startScreen.classList.add("hide");
 
-   // Show the questions screen
-   let questionsScreen = document.getElementById("questions");
-   questionsScreen.classList.remove("hide");
+  // Show the questions screen
+  let questionsScreen = document.getElementById("questions");
+  questionsScreen.classList.remove("hide");
 
   // Start timer
   startTimer();
-  
-
 
   // Show first question
   displayQuestions();
@@ -28,7 +26,7 @@ document.getElementById("start").addEventListener("click", startQuiz);
 
 // Function to start the timer
 function startTimer() {
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     timeLeft--;
     document.getElementById("time").textContent = timeLeft;
     if (timeLeft === 0) {
@@ -40,25 +38,7 @@ function startTimer() {
 
 
 
-// Function to handle what happens when the quiz ends
-function endQuiz() {
-  // Hide questions section
-  let questionsScreen = document.getElementById("questions");
-  questionsScreen.classList.add("hide");
-
-  // Show end screen
-  let endScreen = document.getElementById("end-screen");
-  endScreen.classList.remove("hide");
-
-  // Show final score
-  let finalScore = document.getElementById("final-score");
-  finalScore.textContent = score;
-}
-
-// Create an audio element for correct answers
-let correctAudio = new Audio("./assets/sfx/correct.wav");
-// Create an audio element for Incorrect answers
-let inCorrectAudio = new Audio("./assets/sfx/incorrect.wav");
+//
 
 // Function to handle what happens when a user clicks on a choice button
 
@@ -67,13 +47,17 @@ function questionClick() {
   if (this.value === questions[currentQuestionIndex].answer) {
     // Increase score
     score++;
-     // Play the correct sound
-     correctAudio.play();
+    // Create an audio element for correct answers
+    let correctAudio = new Audio("./assets/sfx/correct.wav");
+    // Play the correct sound
+    correctAudio.play();
   } else {
     // Decrease time
     timeLeft -= 15;
-     // Play the incorrect sound
-     inCorrectAudio.play();
+    // Create an audio element for Incorrect answers
+    let inCorrectAudio = new Audio("./assets/sfx/incorrect.wav");
+    // Play the incorrect sound
+    inCorrectAudio.play();
   }
   // Move to next question
   currentQuestionIndex++;
@@ -87,7 +71,6 @@ function questionClick() {
     endQuiz();
   }
 }
-
 
 // Function to display questions
 
@@ -104,7 +87,7 @@ function displayQuestions() {
   choices.innerHTML = "";
 
   // Loop over choices
-  currentQuestionData.choices.forEach(function(choice, i) {
+  currentQuestionData.choices.forEach(function (choice, i) {
     // Create new button for each choice
     let choiceButton = document.createElement("button");
     choiceButton.setAttribute("class", "choice");
@@ -119,3 +102,27 @@ function displayQuestions() {
     choices.appendChild(choiceButton);
   });
 };
+
+// Function to handle what happens when the quiz ends
+function endQuiz() {
+  // Hide questions section
+  let questionsScreen = document.getElementById("questions");
+  questionsScreen.classList.add("hide");
+
+  // Show end screen
+  let endScreen = document.getElementById("end-screen");
+  endScreen.classList.remove("hide");
+
+  // Show final score
+  let finalScore = document.getElementById("final-score");
+  finalScore.textContent = score;
+
+  // Get user initials
+  let initialsInput = document.getElementById("initials");
+  let initials = initialsInput.value;
+  
+  // Save initials and score to local storage
+  let highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+  highScores.push({ initials: initials, score: score });
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+}
