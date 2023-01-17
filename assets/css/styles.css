@@ -1,18 +1,27 @@
+/* 
+    Body font family and font size 
+*/
 body {
   font-family: Arial;
   font-size: 120%;
 }
-
+/* 
+    Link styling 
+*/
 a {
   color: #563d7c;
   text-decoration: none;
   transition: color 0.1s;
 }
-
+/* 
+    Link hover styling 
+*/
 a:hover {
   color: #8570a5;
 }
-
+/* 
+    Button styling 
+*/
 button {
   display: inline-block;
   margin: 5px;
@@ -25,61 +34,79 @@ button {
   border: 0;
   transition: background-color 0.1s;
 }
-
+/* 
+    Button hover styling 
+*/
 button:hover {
   background-color: #8570a5;
 }
-
+/* 
+    Styling for the choice buttons 
+*/
 .choices button {
   display: block;
 }
 
-/* 
-This class is used to hide elements by setting their display property to none
-This is used to hide elements on the start screen and display the quiz
-*/
-.hide {
-  display: none;
-}
 
+/* 
+    Input styling 
+*/
 input[type="text"] {
   font-size: 100%;
 }
-
+/* 
+    Ordered list styling 
+*/
 ol {
   padding-left: 0px;
   max-height: 400px;
   overflow: auto;
 }
-
+/* 
+    List item styling 
+*/
 li {
   padding: 5px;
   list-style: decimal inside none;
 }
-
+/* 
+    Alternate list item styling 
+*/
 li:nth-child(odd) {
   background-color: #f3edfc;
 }
-
+/* 
+    Wrapper styling 
+*/
 .wrapper {
   margin: 100px auto 0 auto;
   max-width: 600px;
 }
 
+/* 
+This class is used to hide elements
+
+*/
 .hide {
   display: none;
 }
-
+/* 
+    Start screen styling 
+*/
 .start {
   text-align: center;
 }
-
+/* 
+    Scores styling 
+*/
 .scores {
   position: absolute;
   top: 10px;
   left: 10px;
 }
-
+/* 
+    Feedback styling 
+*/
 .feedback {
   font-style: italic;
   font-size: 120%;
@@ -88,7 +115,9 @@ li:nth-child(odd) {
   color: gray;
   border-top: 2px solid #ccc;
 }
-
+/* 
+    Timer styling 
+*/
 .timer {
   position: absolute;
   top: 10px;
